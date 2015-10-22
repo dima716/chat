@@ -4,7 +4,6 @@
  */
 
 modules.define('socket-io__config', function(provide){
-
     provide(/** @exports */{
         /**
          * URL for loading socket.io if it does not exist.
@@ -15,5 +14,4 @@ modules.define('socket-io__config', function(provide){
         connectOptions : {},
         url : '/static/js/sails.io.js'
     });
-
 });

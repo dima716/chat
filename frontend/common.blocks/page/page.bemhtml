@@ -7,7 +7,7 @@ block('page')(
             process.env.BROWSER_SYNC_PORT +
             '/browser-sync/browser-sync-client.2.9.11.js';
 
-        if(process.env.NODE_ENV === 'development') {
+        if(process.env.YENV === 'development') {
             content.push({
                 elem : 'js',
                 url : url
