@@ -1,15 +1,10 @@
 language: node_js
 node_js:
-- '0.12'
-branches:
-  only:
-  - master
-  - stable
-  - beta
+- '4.0.0'
 deploy:
   provider: heroku
-  api_key:
-    secure: WYfyx56/Ep8Itxilnpk8MPSokCLO3z7aN7MMhlhbCoS6u0a4p3zNAkpkFC0BJ50Nqt1aONhgQ0LAdIyckzE9SnaEUvJl7xM0fKLf+F9lQnjyKlo6katKKjGwjp/IH8YY1NTrRAvHPvN/hQQg56xJNEtUCtSEk4pWhRAmBXByAefUMYwrBCT7OsEYyVjEJvrvS/FbzNk6Oxg/45058g0qJocR3SDHgCh6SlDv1jV1kMKcglY1sfZt+rjCvPdZMt5Nyf0Ru/JQ8+GuoNM7tE4O0bMha3lPru+QCsgRpUsVfwUN0gE526dcfF/i3fRNzQ+42MvP7c1mZ8zT+ZpB2pA6B9akZpHFf5BNJQTF0wWcObRoAbUpH4vcJ8o/drPNEnGrUxzqNnL5GKFHJv7RRPci8D647OI3geVBsFFyrEql1hS6Tj0qlblC39ym5VNLIf9MraTQ3KH7F9EQXAhPvTRcucDL4ugbpE6j4b47I4l/2seH4WfKEKMQWh+2uzx0swto4SuZrnzyO2EJxWTnIVaUu3czwwFdsU+m66i2MQXC35wW5faIDTxDBeTcbbDJobF5NyOuW40Y115DWoPf2Aj2EbNQiAEMYpxBJ9uJ7RYjtDx2Dd3zNvArvir+Cd21POga1HOe3Jup+UnJoLvaQbhcGTN+ilLtD35J+hlv21iu4sM=
-  app: shriming
+  app: shriming-dima716
   on:
-    repo: shriming/chat
+    repo: dima716/chat
+  api_key:
+    secure: FUz+mCz5qxevMYiwJsCdtz8WNzTXYs9yvWyPlXXRq5sYEP6PuG82LerNGqoBJB2aBkgXrp/8hNUOmFJ4QADLc/H4PDyzPccdr1QUaRFES5GQDIBnlbZUrXxGYCWLWASBP3+vMBD9ta59UXddqz6x5dqzANe2/jUWiYF+wFXCrgQfvuHKk+hx+J85LupINx0bTNIGIXXNII/TdV9PnYUggJDIXup5+/E9+zasqIpayn0og+hYMD/UikkPryc9/kJ+4q9mFywOs4/gjabFSbCvuF+e/2w5+bKY4nc1MqzN/BFzbms2TWs6/2l522ZhYXw5Cuu+s8dfoVgis5xHShanrpZmK9nCs+AWGrBfrOGf9ubYHfLZevnb44cw+FXXiWFET58NVP8LhNGZxnem5iQGdGFT8m3b0ws1Jm1qPwRAisNPFvvs5scRnLe5irlWUy9rgfHgFDrpH6ecGUayWxhyavY76RaPP4HnXlHCYWc0AJ+v33/5Pnc4obbqS+Fj0pc1+0h73FQqGMkMHFMH+xVQIjd5VZeAaDvklsI0q+ynDtnbkqWy+B3HFvaQ10lN1FAsETO6w2esEoC/VIr3tA5wqRoofNayLTIYwGSWKEHTqHPRjS2+xh//vXISxierfbJUKtxJubECJPHCdTw/MXXicRkL9/ZOvFUKzXqJ83GFvSw=
