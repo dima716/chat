@@ -1,4 +1,5 @@
 language: node_js
+script: npm run init
 node_js:
 - '4.0.0'
 deploy:
