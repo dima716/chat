@@ -11,6 +11,7 @@ modules.define(
         /* global io */
 
         function doProvide(preserveGlobal){
+            console.log('preserveGlobal', preserveGlobal);
             /**
              * @exports
              * @type Function
@@ -19,5 +20,9 @@ modules.define(
             provide(preserveGlobal? io : io);
         }
 
-        typeof io !== 'undefined'? doProvide(true) : loader(cfg.url, doProvide);
+        if (typeof io !== 'undefined') {
+            doProvide(true);
+        } else {
+            loader(cfg.url, doProvide);
+        }
     });
