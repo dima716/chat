@@ -7,6 +7,8 @@ var flatten = require('gulp-flatten');
 var runSequence = require('run-sequence');
 var browserSync = require('browser-sync').create();
 var stylint = require('gulp-stylint');
+var minifyCss = require('gulp-minify-css');
+var gulpif = require('gulp-if');
 var config = require('./config/env/config');
 
 /***************************************************************************
@@ -35,6 +37,10 @@ gulp.task('nodemon-restart', function(){
 /***************************************************************************
  * Copy tasks                                                              *
  ***************************************************************************/
+gulp.task('copy-libs', function(){
+    return gulp.src(config.src.libs)
+    .pipe(gulp.dest(config.dest.libs));
+});
 
 gulp.task('copy-images', function(){
     return gulp.src(config.src.images)
@@ -46,6 +52,7 @@ gulp.task('copy-css', function(){
     return gulp.src(config.dest.mergedCss)
         .pipe(replace(/(url\([',"]?(.*[\/]{1})?(.*\.(png|jpg|gif|svg))[',"]?\))/g, 'url("../images/$3")'))
         .pipe(flatten())
+        .pipe(gulpif(config.env === 'production', minifyCss()))
         .pipe(gulp.dest(config.dest.finalCss));
 });
 
@@ -55,7 +62,7 @@ gulp.task('copy-js', function(){
         .pipe(gulp.dest(config.dest.finalJs));
 });
 
-gulp.task('copy-files', ['copy-js', 'copy-css', 'copy-images']);
+gulp.task('copy-files', ['copy-libs', 'copy-js', 'copy-css', 'copy-images']);
 
 /***************************************************************************
  * Mongo tasks                                                             *
@@ -122,10 +129,6 @@ gulp.task('browser-reload', function(){
  * Other tasks                                                             *
  ***************************************************************************/
 
-gulp.task('run-app', shell.task([
-    'node app.js --prod'
-]));
-
 gulp.task('watch', function(){
     gulp.watch(config.src.images, function(){
         runSequence('copy-images', 'browser-reload');
@@ -145,7 +148,7 @@ gulp.task('watch', function(){
 
     gulp.watch(config.src.js, function(){
         runSequence('jslint', 'enb-no-cache', 'copy-js', 'browser-reload');
-     });
+    });
 });
 
 /***************************************************************************
@@ -154,10 +157,6 @@ gulp.task('watch', function(){
 
 gulp.task('dev', function(){
     runSequence('lint', 'enb-no-cache', 'copy-files', 'server', 'browser-sync', 'watch');
-});
-
-gulp.task('prod', function(){
-    runSequence('enb-no-cache', 'copy-files', 'run-app');
 });
 
 gulp.task('default', ['mongo', 'dev']);

@@ -45,7 +45,6 @@ if(!fs.existsSync('frontend/desktop.bundles/merged')) {
 }
 
 module.exports = function (config) {
-
     config.includeConfig('enb-bem-specs');
 
     config.module('enb-bem-specs').createConfigurator('specs').configure({
@@ -56,7 +55,6 @@ module.exports = function (config) {
     });
 
     config.nodes('*.bundles/*', function (nodeConfig) {
-
         var addTechs = [
                 // essential (begin)
                 // config levels
@@ -181,7 +179,7 @@ module.exports = function (config) {
                 ],
                 [
                     tech.borschik,
-                    { sourceTarget : '?.css', destTarget : '_?.css', tech : 'cleancss', freeze : true, minify : true }
+                    { sourceTarget : '?.css', destTarget : '_?.css', tech : 'cleancss', freeze : true, minify : false }
                 ]
             ]);
         });
@@ -214,9 +212,8 @@ function getLevels(config) {
         { path : 'libs/bem-components/desktop.blocks', check : false },
         { path : 'libs/bem-components/design/common.blocks', check : false },
         { path : 'libs/bem-components/design/desktop.blocks', check : false },
-        { path : 'libs.blocks', check : true },
-        { path : 'common.blocks', check : true },
-        { path : 'desktop.blocks', check : true }
+        { path : 'desktop.blocks', check : true },
+        { path : 'common.blocks', check : true }
     ];
 }
 
