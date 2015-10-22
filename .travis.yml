@@ -1,7 +1,7 @@
 language: node_js
-script: npm run init
+before_deploy: npm run init
 node_js:
-- '4.0.0'
+- '0.12'
 deploy:
   provider: heroku
   app: shriming-dima716
